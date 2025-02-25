@@ -1,0 +1,144 @@
+---
+title: "Hands-on Random Slope"
+---
+
+
+```{r library}
+#| echo: false
+
+library(lme4)
+library(sjPlot)
+library(lattice)
+library(haven)
+library(tidyverse)
+pisa_idn <- read_csv("data/pisa_idn.csv")
+
+skor <- pisa_idn %>%
+  filter(CNTSCHID == 36000271 | 
+        CNTSCHID == 36000272 |
+        CNTSCHID == 36000273 |
+        CNTSCHID == 36000274 |
+        CNTSCHID == 36000275 |
+        CNTSCHID == 36000276 |
+        CNTSCHID == 36000277 |
+        CNTSCHID == 36000278 |
+        CNTSCHID == 36000279 |
+        CNTSCHID == 36000280 |
+        CNTSCHID == 36000285 |
+        CNTSCHID == 36000286 |
+        CNTSCHID == 36000287 |
+        CNTSCHID == 36000288 |
+        CNTSCHID == 36000289 |
+        CNTSCHID == 36000290 |
+        CNTSCHID == 36000291 |
+        CNTSCHID == 36000292 |
+        CNTSCHID == 36000293 |
+        CNTSCHID == 36000294) 
+
+skor <- skor %>% filter(growth != "NA")
+```
+
+# Random Slope
+
+- The previous model makes the assumption that the effect of growth mindset is the same across all schools (that's why the lines are parallel).
+
+- What if one growth mindset score is more ‘effective’ in some schools than others in improving maths scores.
+
+- At this point a random slope is needed.
+
+- We get a new coefficient that describes the differences between schools in the effect of growth mindset on maths scores.
+
+## Random Slope Estimation
+
+```{r}
+# model with random slope
+m2 <- lmer(MATH ~ 1 + growth + 
+             (1 + growth | CNTSCHID), 
+           data = skor)
+# print results
+summary(m2)
+```
+
+## Random Slope Estimation
+
+```{r}
+tab_model(m2, show.icc = TRUE)
+```
+
+## Interpretation
+
+- The fixed effect of growth mindset is smaller than in model 1 and we have a new random effect coefficient.
+- The random slope variance for years of education is 73.29.
+
+## Density
+
+```{r}
+#| output: false
+
+skor$m2 <- predict(m2)
+# visualize the predictions based on our model
+skor %>% 
+  ggplot(aes(growth, m2)) + 
+  geom_smooth(se = F, method = lm, size = 2) +
+  geom_jitter()+
+  stat_smooth(aes(color = CNTSCHID, group = CNTSCHID),
+              geom = "line", alpha = 0.4, size = 1) +
+  theme_bw() +
+  guides(color = F) +
+  labs(x = "Growth Mindset", 
+       y = "Math score", 
+       color = "School")
+
+```
+
+## Density Result
+
+```{r results='hold'}
+#| echo: false
+
+skor$m2 <- predict(m2)
+# visualize the predictions based on our model
+skor %>% 
+  ggplot(aes(growth, m2)) + 
+  geom_smooth(se = F, method = lm, size = 2) +
+  geom_jitter()+
+  stat_smooth(aes(color = CNTSCHID, group = CNTSCHID),
+              geom = "line", alpha = 0.4, size = 1) +
+  theme_bw() +
+  guides(color = F) +
+  labs(x = "Growth Mindset", 
+       y = "Math score", 
+       color = "School")
+```
+
+Fixed effect is -8.054, but each school has a diverse slope.
+
+## Density of Intercept 
+
+```{r}
+# another way to see random effect
+qqmath(ranef(m2, condVar = TRUE))[[1]]
+```
+
+The graph shows how the influence of growth mindset varies across schools.
+
+## Random Effects
+
+```{r}
+coefs_m2 <- coef(m2)
+
+coefs_m2$CNTSCHID %>%
+  mutate(CNTSCHID = rownames(coefs_m2$CNTSCHID))  %>% 
+  ggplot(aes(growth, `(Intercept)`, label = CNTSCHID)) + 
+  geom_point() + 
+  geom_smooth(se = F, method = lm) +
+  geom_label(nudge_y = 0.15, alpha = 0.5) +
+  theme_bw() +
+  labs(x = "Slope", y = "Intercept")
+```
+
+## Interpretation
+
+- The graph shows that some schools have high maths scores but low effects on outcomes and vice versa.
+
+- The blue line represents the relationship between the random intercept and the slope with a coefficient of 0.6. This shows that the smaller the fixed mindset, the higher the maths score.

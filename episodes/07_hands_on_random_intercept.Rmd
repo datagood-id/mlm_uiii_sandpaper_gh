@@ -1,0 +1,56 @@
+---
+title: "Hands-on Random Intercept"
+---
+
+```{r}
+#| echo: false
+
+library(tidyverse)
+library(lme4)
+library(lattice)
+library(sjPlot)
+
+pisa <- read.csv("data/pisa_idn_sample.csv")
+```
+
+## Creating Random Intercept Model
+
+If we have previously created a null model without predictors, in the random intercept model we will include predictors. For example, if we want to know the relationship between ESCS and maths achievement, we can easily create the model with the same steps as when we created the null model.
+
+```{r}
+m1 <- lmer(MATH ~ 1 + ESCS + (1 | CNTSCHID), data = pisa)
+```
+
+## The result
+
+```{r}
+summary(m1)
+```
+
+## ICC result
+
+```{r}
+tab_model(m1)
+```
+
+## Prediction plot
+
+```{r}
+pisa$m1 <- predict(m1)
+
+pisa %>% 
+  ggplot(aes(ESCS, m1, color = CNTSCHID, group = CNTSCHID)) + 
+  geom_smooth(se = F, method = lm) +
+  theme_bw() +
+  labs(x = "ESCS", 
+       y = "Matematika", 
+       color = "CNTSCHID")
+```
+
+## QQ-plot
+
+```{r}
+qqmath(ranef(m1, condVar = TRUE))
+```
+
+

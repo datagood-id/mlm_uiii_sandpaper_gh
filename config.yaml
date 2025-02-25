@@ -64,17 +64,26 @@ contact: 'team@carpentries.org'
 # - another-learner.md
 
 # Order of episodes in your lesson
-episodes: 
-- introduction.Rmd
+episodes:
+- 01_course_structure.Rmd
+- 02_regression.Rmd
+- 03_hands_on_regression.Rmd
+- 04_why_mlm.Rmd
+- 05_hands_on_null_model.Rmd
+- 06_random_intercept.Rmd
+- 07_hands_on_random_intercept.Rmd
+- 08_random_slope.Rmd
+- 09_hands_on_random_slope.Rmd
+- 10_solution.Rmd
 
 # Information for Learners
-learners: 
+learners:
 
 # Information for Instructors
-instructors: 
+instructors:
 
 # Learner Profiles
-profiles: 
+profiles:
 
 # Customisation ---------------------------------------------
 #

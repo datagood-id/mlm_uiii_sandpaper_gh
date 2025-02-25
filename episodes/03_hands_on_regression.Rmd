@@ -1,0 +1,92 @@
+---
+title: "Regression in R"
+---
+
+## Starter Pack
+
+First step to get started fitting linear regression in R is to open it on your computer. It's by default loaded `stats` library each time R is started and able to run function `lm` for fitting basic linear regression. 
+
+## Basic `lm`
+
+
+```{r}
+#| eval: false
+
+lm(formula, data)
+```
+
+
+`formula` defines the linear regression form and `data` indicates the dataset  in the analysis. 
+
+## Example 
+
+Let's try predicting students mathematics score (`MATH`) from measure of economic social culture status (`ESCS`). This model is defined in R as:
+
+```{r}
+#| echo: false
+
+PISA <- read.csv("data/pisa_idn_sample.csv")
+```
+
+
+```{r}
+#| eval: false
+
+Model1.1 <- lm(MATH ~ sex + ESCS, PISA)
+```
+
+The code above represents regression equation. Where `MATH` is dependent variable, followed by the independent variable `ESCS` separated by ~. 
+
+## Regression Output
+
+After running regression equation with `lm` function. The next step is to see the output of `Model1.1`. Further information on our model can be obtained by requesting a summary of the model.
+
+```{r}
+#| eval: false
+
+summary(Model1.1)
+```
+
+`summary` calls the result of the model as the following:
+
+```{r}
+#| echo: false
+
+Model1.1 <- lm(MATH ~ sex + ESCS, PISA)
+summary(Model1.1)
+```
+
+Often in a regression model, we are interested in additional information that the model produces, such as predicted values and residuals. Using the R call attributes() we can get a list of the additional information available for the lm function.
+
+Using R call `attributes` to find the additional information in the model produces in `lm` function. Such as predicted values and residuals.
+
+```{r}
+attributes(Model1.1)
+```
+
+The list of attribute is shown above can be pulled out of the fitted regression model. For example, to obtain the predicted `MATH` for each individual in the sample, we can type the following:
+
+```{r}
+Model1.1$fitted.values
+```
+
+We can obtain another attributes in the same regression by typing the model following by `$` then typing the list of attributes. 
+
+
+## Interaction Terms in Regression
+
+More complicated regression relationships can also be easily modeled using the lm() function. An interaction is simply computed as the product of the interacting variables, so that the moderation model using lm() is defined as:
+
+```{r}
+Model1.2 <- lm(MATH ~ sex + ESCS + sex*ESCS, PISA)
+
+summary(Model1.2)
+```
+
+The slope for interaction is denoted `sex:ESCS`, takes the value -0.8908, and is non-significant (*t*=-0.284, *p*=0.7765).
+
+
+
+
+
+

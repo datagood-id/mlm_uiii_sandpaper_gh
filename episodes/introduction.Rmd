@@ -1,5 +1,5 @@
 ---
-title: 'introduction'
+title: 'Multilevel Model'
 teaching: 10
 exercises: 2
 ---
@@ -19,93 +19,41 @@ exercises: 2
 
 ## Introduction
 
-This is a lesson created via The Carpentries Workbench. It is written in
-[Pandoc-flavored Markdown][pandoc] for static files (with extension `.md`) and
-[R Markdown][r-markdown] for dynamic files that can render code into output
-(with extension `.Rmd`). Please refer to the [Introduction to The Carpentries
-Workbench][carpentries-workbench] for full documentation.
+Given that data in social sciences are naturally nested, we need to address such a structure in which individuals are nested within families, neighborhoods, schools, and geographical areas. The course will provide an understanding of the concepts of the multilevel model and its application in social sciences.
 
-What you need to know is that there are three sections required for a valid
-Carpentries lesson template:
+The course is divided into two parts: theoretical and practical. In the theoretical section, we discuss the theoretical assumption and underlying multilevel model. In the practical section, we explore, dive, and estimate the multilevel model. Two elective case studies will be provided in this course: the multilevel model in education, where students are clustered into schools. Another application is the analysis of cross-country data, such as the World Values Survey, while the second concerns values and attitudes worldwide, considering individual and country-specific characteristics. The course will focus on the two-level linear model as a template to illustrate the issues of specification, estimation, and inference. Although each lesson includes guided exercises using R, no prior knowledge of R is required.
 
- 1. `questions` are displayed at the beginning of the episode to prime the
-    learner for the content.
- 2. `objectives` are the learning objectives for an episode displayed with
-    the questions.
- 3. `keypoints` are displayed at the end of the episode to reinforce the
-    objectives.
+## About the course
 
-:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: instructor
-
-Inline instructor notes can help inform instructors of timing challenges
-associated with the lessons. They appear in the "Instructor View"
-
-::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-
-::::::::::::::::::::::::::::::::::::: challenge 
-
-## Challenge 1: Can you do it?
-
-What is the output of this command?
-
-```r
-paste("This", "new", "lesson", "looks", "good")
-```
-
-:::::::::::::::::::::::: solution 
-
-## Output
- 
-```output
-[1] "This new lesson looks good"
-```
-
-:::::::::::::::::::::::::::::::::
+- The course is divided into two parts: theoretical and practical. 
+- In the theoretical section, we discuss the theoretical assumption and underlying multilevel model. 
+- In the practical section, we explore, dive, and estimate the multilevel model. 
+- The course will focus on the two-level linear model as a template to illustrate the issues of specification, estimation, and inference. 
+- Although each lesson includes guided exercises using R, no prior knowledge of R is required.
 
 
-## Challenge 2: how do you nest solutions within challenge blocks?
+## Course approach
 
-:::::::::::::::::::::::: solution 
+- Learn the intuition of modeling
+- Hands-on experience
+- Worked example 
 
-You can add a line with at least three colons and a `solution` tag.
+## Structure
+            
+-  Regression
+-  Why MLM?
+-  Hands-on Null Model
+-  Random Intercept
+-  Hands-on Random Intercept
+-  Random Slope
+-  Hands-on Random Slope
 
-:::::::::::::::::::::::::::::::::
-::::::::::::::::::::::::::::::::::::::::::::::::
+## Carpentry tools
 
-## Figures
+- [R](https://cran.r-project.org/bin/windows/base/) 
+- [RStudio](https://posit.co/downloads/)
 
-You can include figures generated from R Markdown:
+## The packages
 
-```{r pyramid, fig.alt = "pie chart illusion of a pyramid", fig.cap = "Sun arise each and every morning"}
-pie(
-  c(Sky = 78, "Sunny side of pyramid" = 17, "Shady side of pyramid" = 5), 
-  init.angle = 315, 
-  col = c("deepskyblue", "yellow", "yellow3"), 
-  border = FALSE
-)
-```
-Or you can use pandoc markdown for static figures with the following syntax:
-
-`![optional caption that appears below the figure](figure url){alt='alt text for
-accessibility purposes'}`
-
-![You belong in The Carpentries!](https://raw.githubusercontent.com/carpentries/logo/master/Badge_Carpentries.svg){alt='Blue Carpentries hex person logo with no text.'}
-
-## Math
-
-One of our episodes contains $\LaTeX$ equations when describing how to create
-dynamic reports with {knitr}, so we now use mathjax to describe this:
-
-`$\alpha = \dfrac{1}{(1 - \beta)^2}$` becomes: $\alpha = \dfrac{1}{(1 - \beta)^2}$
-
-Cool, right?
-
-::::::::::::::::::::::::::::::::::::: keypoints 
-
-- Use `.md` files for episodes when you want static content
-- Use `.Rmd` files for episodes when you need to generate output
-- Run `sandpaper::check_lesson()` to identify any issues with your lesson
-- Run `sandpaper::build_lesson()` to preview your lesson locally
-
-::::::::::::::::::::::::::::::::::::::::::::::::
-
+- [`tidyverse`](https://www.tidyverse.org/)
+- [`lme4`](https://cran.r-project.org/web/packages/lme4/index.html)

@@ -1,0 +1,85 @@
+---
+title: "Hands-on Null Model"
+---
+
+
+```{r}
+#| echo: false
+#| output: false
+
+library(tidyverse)
+
+pisa <- read.csv("data/pisa_idn_sample.csv")
+
+```
+
+## Estimate null model
+
+The first model created in multilevel modelling is the null model, which is a simple model with no predictors. By creating a null model we know how much variation we have at each level. The first step is to run the *package* `lme4`, then create the model using the `lmer()` function.
+
+```{r}
+#| output: false
+
+library(lme4)
+
+m0 <- lmer(MATH ~ 1 + (1 | CNTSCHID), data = pisa)
+```
+
+## Null model result
+
+To view the model results, we can run the `summary()` function and put the model `m0` inside the bracket.
+
+```{r}
+summary(m0)
+```
+
+## Find ICC
+
+Then we can find the ICC score manually by calculating the proportion of school variation divided by the sum of school variation and individual variation. Besides calculating manually, we can find the ICC score using the `tab_model()` function of *package* `sjPlot`.
+
+```{r}
+#| warning: false
+
+library(sjPlot)
+
+tab_model(m0)
+```
+
+## Understanding ICC with Plot
+
+Furthermore, to understand the meaning of school-level and individual-level variations, we can look at the graph across all schools. School-level variation comes from how different the lines (ESCS) are between schools. If the variation is low, the lines will be very similar. On the other hand, if the variation is large, then the lines will be very different. Individual-level variation is a summary of the differences between individuals (dots) and schools (lines).
+
+The first step we take to graph the model for all schools is to predict the scores based on the model we created using the `predict()` function and save it as a new variable in our data.
+
+```{r}
+pisa$m0 <- predict(m0)
+```
+
+## Null model plot
+
+Second, create a graph showing the linear mean line for each school using `ggplot()` and the function `geom_smooth(se = F, method = lm)`, to estimate the linear trend without confidence intervals.
+
+```{r}
+pisa %>% 
+  ggplot(aes(ESCS, m0, color = CNTSCHID, group = CNTSCHID)) + 
+  geom_smooth(se = F, method = lm) +
+  theme_bw() +
+  theme(axis.text.x = element_blank(),
+        axis.ticks = element_blank()) +
+  labs(x = "", y = "Matematika", color = "CNTSCHID")
+```
+
+## Plotting with `qqmath`
+
+Beside using `ggplot()`, we can visualise the random effects using dotplot from `lattice` *package*  using `qqmath()` and with random effect from the model using `ranef()`.
+
+```{r}
+#| warning: false
+
+library(lattice)
+
+qqmath(ranef(m0, condVar = TRUE))
+```
+
+In the graph, each dot represents a school and the line represents a confidence interval. 0 is an intercept in $x$ axis.
+

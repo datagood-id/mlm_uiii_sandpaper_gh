@@ -1,0 +1,138 @@
+---
+title: "Solution"
+---
+
+After reading the instruction of the exercise session, this page is going to show you how the exercise should work step by step. Note that it's possible to find an error and your code is not working the way it should be. First, make sure you have followed the steps correctly. Re-examine the code, perhaps you missed something *even one word or punctuation*. Read the `error`, it helps you to find the exact mistake you made in the code. 
+
+## First Prep
+
+Remember the first step in the lecture session? Always load the `package` to make the functions work. We need to load some `packages` before started to make any models.
+
+```{r}
+library(tidyverse)
+```
+
+`tidyverse` is going to help you read the data in certain format, such as `.csv`. 
+
+## Call the Data
+
+We need to call the data we're going to use with the function in the `tidyverse` package. 
+
+```{r}
+pisa <- read.csv("data/pisa_idn_sample.csv")
+```
+
+`read.csv` function calls the data in `.csv` format. The other things before the slash is the name of the data being placed. While the `../` is a `html` command to call the data in different folder. In this case, `dataset` folder is not in the same folder with this page. 
+
+## Random Intercept Model
+
+### Begin Modeling
+
+Before we're stepping into modeling, make sure we load the `package` to run the multilevel model `function`.
+
+```{r}
+library(lme4)
+```
+
+Next step is modeling random intercept:
+
+```{r}
+m1 <- lmer(MATH ~ 1 + growth +  (1 | CNTSCHID), data = pisa)
+```
+
+If you have created the model, now you can see the result by calling it with `summary`.
+
+### View the Result
+
+```{r}
+summary(m1)
+```
+
+If you want to make the result into a table, then you need function `tab_model`. Make sure you load `sjPlot` package to run the function.
+
+```{r}
+library(sjPlot)
+
+tab_model(m1)
+```
+
+
+### Visualise Model in `ggplot`
+
+This step guide you to visualise the model you have created into a plot. 
+
+```{r}
+pisa$m1 <- predict(m1)
+
+pisa |> 
+  ggplot(aes(growth, m1, color = CNTSCHID, group = CNTSCHID)) + 
+  geom_smooth(se = F, method = lm) +
+  theme_bw() +
+  labs(x = "Growth Mindset", 
+       y = "Mathematic", 
+       color = "CNTSCHID")
+```
+
+### Visualise Model in `qqmath`
+
+```{r}
+library(lattice)
+
+qqmath(ranef(m1, condVar = TRUE))
+```
+
+
+## Random Slope Model
+
+Following the steps above is going to make random slope model easier. Although it is not the same model, the steps quite familiar and same `packages` used. We don't need to load the `packages` that we have loaded before. Now, it's just modeling, viewing, and visualise the model.
+
+### Modeling
+```{r}
+m2 <- m2 <- lmer(MATH ~ 1 + ESCS + (1 + ESCS | CNTSCHID), data = pisa)
+```
+
+### Viewing
+
+We're going to see the result with `summary` and `tab_model` to see the model in table form.
+
+**Summary**
+```{r}
+summary(m2)
+```
+
+**Table**
+```{r}
+tab_model(m2)
+```
+
+
+### Visualise
+
+Here, we're going to visualise the model through `ggplot` and `qqmath`.
+
+```{r}
+pisa$m2 <- predict(m2)
+
+pisa %>% 
+  ggplot(aes(ESCS, m1, color = CNTSCHID, group = CNTSCHID)) + 
+  geom_smooth(se = F, method = lm) +
+  theme_bw() +
+  labs(x = "ESCS", 
+       y = "Matematika", 
+       color = "CNTSCHID")
+```
+
+```{r}
+qqmath(ranef(m2, condVar = TRUE))
+```
+
+
+
+
+
+
+
+
+
+
+

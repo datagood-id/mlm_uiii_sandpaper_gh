@@ -1,0 +1,15 @@
+---
+title: "Dataset"
+format: html
+---
+Dataset needed in certain class.
+
+
+## PISA
+[{{< fa file-csv >}} `pisa_idn.csv`](/dataset/pisa_idn.csv)
+
+## PISA Sample
+[{{< fa file-csv >}} `pisa_idn_sample.csv`](/dataset/pisa_idn_sample.csv)
+
+
+

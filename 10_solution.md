@@ -113,13 +113,7 @@ If you want to make the result into a table, then you need function `tab_model`.
 
 ``` r
 library(sjPlot)
-```
 
-``` output
-Install package "strengejacke" from GitHub (`devtools::install_github("strengejacke/strengejacke")`) to load all sj-packages at once!
-```
-
-``` r
 tab_model(m1)
 ```
 

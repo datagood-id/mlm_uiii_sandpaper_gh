@@ -83,13 +83,7 @@ Then we can find the ICC score manually by calculating the proportion of school 
 
 ``` r
 library(sjPlot)
-```
 
-``` output
-Learn more about sjPlot with 'browseVignettes("sjPlot")'.
-```
-
-``` r
 tab_model(m0)
 ```
 

@@ -367,7 +367,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Hands-on Null Model</h1>
-        <p>Last updated on 2025-04-01 |
+        <p>Last updated on 2025-04-22 |
 
         <a href="https://example.com/FIXME-template-source/edit/main/episodes/05_hands_on_null_model.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -473,18 +473,9 @@ score using the <code>tab_model()</code> function of <em>package</em>
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw">library</span><span class="op">(</span><span class="va">sjPlot</span><span class="op">)</span></span></code></pre>
-</div>
-<div class="codewrapper">
-<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="output" tabindex="0"><code><span><span class="co">#refugeeswelcome</span></span></code></pre>
-</div>
-<div class="codewrapper sourceCode" id="cb11">
-<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">tab_model</span><span class="op">(</span><span class="va">m0</span><span class="op">)</span></span></code></pre>
+<code class="sourceCode R"><span><span class="kw">library</span><span class="op">(</span><span class="va">sjPlot</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">tab_model</span><span class="op">(</span><span class="va">m0</span><span class="op">)</span></span></code></pre>
 </div>
 <table style="border-collapse:collapse; border:none;" class="table"><tr><th style="border-top: double; text-align:center; font-style:normal; font-weight:bold; padding:0.2cm;  text-align:left; ">
  
@@ -563,7 +554,7 @@ the differences between individuals (dots) and schools (lines).</p>
 predict the scores based on the model we created using the
 <code>predict()</code> function and save it as a new variable in our
 data.</p>
-<div class="codewrapper sourceCode" id="cb12">
+<div class="codewrapper sourceCode" id="cb10">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -574,7 +565,7 @@ data.</p>
 using <code>ggplot()</code> and the function
 <code>geom_smooth(se = F, method = lm)</code>, to estimate the linear
 trend without confidence intervals.</p>
-<div class="codewrapper sourceCode" id="cb13">
+<div class="codewrapper sourceCode" id="cb11">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -597,7 +588,7 @@ trend without confidence intervals.</p>
 effects using dotplot from <code>lattice</code> <em>package</em> using
 <code>qqmath()</code> and with random effect from the model using
 <code>ranef()</code>.</p>
-<div class="codewrapper sourceCode" id="cb15">
+<div class="codewrapper sourceCode" id="cb13">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -674,8 +665,8 @@ any links that you are not going to use.
   "url": "https://FIXME-template-source.github.io/NA/instructor/05_hands_on_null_model.html",
   "identifier": "https://FIXME-template-source.github.io/NA/instructor/05_hands_on_null_model.html",
   "dateCreated": "2025-02-24",
-  "dateModified": "2025-04-01",
-  "datePublished": "2025-04-15"
+  "dateModified": "2025-04-22",
+  "datePublished": "2025-04-22"
 }
 
   </script><script>

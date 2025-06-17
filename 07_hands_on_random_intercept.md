@@ -23,9 +23,6 @@ Attaching package: 'Matrix'
 The following objects are masked from 'package:tidyr':
 
     expand, pack, unpack
-
-
-Install package "strengejacke" from GitHub (`devtools::install_github("strengejacke/strengejacke")`) to load all sj-packages at once!
 ```
 
 ## Creating Random Intercept Model

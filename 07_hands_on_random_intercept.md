@@ -23,6 +23,9 @@ Attaching package: 'Matrix'
 The following objects are masked from 'package:tidyr':
 
     expand, pack, unpack
+
+
+Learn more about sjPlot with 'browseVignettes("sjPlot")'.
 ```
 
 ## Creating Random Intercept Model

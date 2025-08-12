@@ -4832,7 +4832,7 @@
       "VignetteBuilder": "knitr",
       "NeedsCompilation": "no",
       "Author": "Daniel Lüdecke [aut, cre] (<https://orcid.org/0000-0002-8895-3206>), Iago Giné-Vázquez [ctb], Alexander Bartel [ctb] (<https://orcid.org/0000-0002-1280-6138>)",
-      "Repository": "RSPM"
+      "Repository": "CRAN"
     },
     "sjstats": {
       "Package": "sjstats",

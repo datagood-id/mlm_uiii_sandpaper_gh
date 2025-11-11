@@ -25,7 +25,7 @@ The following objects are masked from 'package:tidyr':
     expand, pack, unpack
 
 
-Learn more about sjPlot with 'browseVignettes("sjPlot")'.
+#refugeeswelcome
 ```
 
 ## Creating Random Intercept Model

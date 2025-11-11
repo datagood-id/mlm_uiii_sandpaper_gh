@@ -113,7 +113,13 @@ If you want to make the result into a table, then you need function `tab_model`.
 
 ``` r
 library(sjPlot)
+```
 
+``` output
+#refugeeswelcome
+```
+
+``` r
 tab_model(m1)
 ```
 

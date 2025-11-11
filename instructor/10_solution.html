@@ -365,7 +365,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Solution</h1>
-        <p>Last updated on 2025-08-05 |
+        <p>Last updated on 2025-11-11 |
 
         <a href="https://example.com/FIXME-template-source/edit/main/episodes/10_solution.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -509,9 +509,18 @@ to run the function.</p>
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw">library</span><span class="op">(</span><span class="va">sjPlot</span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu">tab_model</span><span class="op">(</span><span class="va">m1</span><span class="op">)</span></span></code></pre>
+<code class="sourceCode R"><span><span class="kw">library</span><span class="op">(</span><span class="va">sjPlot</span><span class="op">)</span></span></code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code><span><span class="co">#refugeeswelcome</span></span></code></pre>
+</div>
+<div class="codewrapper sourceCode" id="cb13">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">tab_model</span><span class="op">(</span><span class="va">m1</span><span class="op">)</span></span></code></pre>
 </div>
 <table style="border-collapse:collapse; border:none;" class="table"><tr><th style="border-top: double; text-align:center; font-style:normal; font-weight:bold; padding:0.2cm;  text-align:left; ">
  
@@ -596,7 +605,7 @@ Marginal R<sup>2</sup> / Conditional R<sup>2</sup></td>
 <a class="anchor" aria-label="anchor" href="#visualise-model-in-ggplot"></a></h3>
 <p>This step guide you to visualise the model you have created into a
 plot.</p>
-<div class="codewrapper sourceCode" id="cb12">
+<div class="codewrapper sourceCode" id="cb14">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -619,7 +628,7 @@ plot.</p>
 <div class="section level3">
 <h3 id="visualise-model-in-qqmath">Visualise Model in <code>qqmath</code>
 <a class="anchor" aria-label="anchor" href="#visualise-model-in-qqmath"></a></h3>
-<div class="codewrapper sourceCode" id="cb14">
+<div class="codewrapper sourceCode" id="cb16">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -641,7 +650,7 @@ Although it is not the same model, the steps quite familiar and same
 modeling, viewing, and visualise the model.</p>
 <div class="section level3">
 <h3 id="modeling">Modeling<a class="anchor" aria-label="anchor" href="#modeling"></a></h3>
-<div class="codewrapper sourceCode" id="cb16">
+<div class="codewrapper sourceCode" id="cb18">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -653,7 +662,7 @@ modeling, viewing, and visualise the model.</p>
 <p>We’re going to see the result with <code>summary</code> and
 <code>tab_model</code> to see the model in table form.</p>
 <p><strong>Summary</strong></p>
-<div class="codewrapper sourceCode" id="cb17">
+<div class="codewrapper sourceCode" id="cb19">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -689,7 +698,7 @@ Correlation of Fixed Effects:
 ESCS 0.682 </code></pre>
 </div>
 <p><strong>Table</strong></p>
-<div class="codewrapper sourceCode" id="cb19">
+<div class="codewrapper sourceCode" id="cb21">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -787,7 +796,7 @@ Marginal R<sup>2</sup> / Conditional R<sup>2</sup></td>
 <h3 id="visualise">Visualise<a class="anchor" aria-label="anchor" href="#visualise"></a></h3>
 <p>Here, we’re going to visualise the model through <code>ggplot</code>
 and <code>qqmath</code>.</p>
-<div class="codewrapper sourceCode" id="cb20">
+<div class="codewrapper sourceCode" id="cb22">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -806,7 +815,7 @@ and <code>qqmath</code>.</p>
 </h3>
 <pre class="output" tabindex="0"><code>`geom_smooth()` using formula = 'y ~ x'</code></pre>
 </div>
-<figure><img src="../fig/10_solution-rendered-unnamed-chunk-12-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><div class="codewrapper sourceCode" id="cb22">
+<figure><img src="../fig/10_solution-rendered-unnamed-chunk-12-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><div class="codewrapper sourceCode" id="cb24">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -879,8 +888,8 @@ any links that you are not going to use.
   "url": "https://FIXME-template-source.github.io/NA/instructor/10_solution.html",
   "identifier": "https://FIXME-template-source.github.io/NA/instructor/10_solution.html",
   "dateCreated": "2025-02-24",
-  "dateModified": "2025-08-05",
-  "datePublished": "2025-11-04"
+  "dateModified": "2025-11-11",
+  "datePublished": "2025-11-11"
 }
 
   </script><script>
